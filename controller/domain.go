@@ -24,6 +24,7 @@ func AddLongUrl(ctx *gin.Context) {
 	}).Info("add_url")
 
 	url, err := service.NewShortUrlService().AddLongUrl(params.Url)
+	logrus.Info("here")
 	util.BuildRsp(ctx, err, gin.H{"url": url})
 }
 

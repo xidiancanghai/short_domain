@@ -23,5 +23,8 @@ func (s *ShortUrlService) AddLongUrl(strUrl string) (string, error) {
 }
 
 func (s *ShortUrlService) GetByShortUrl(strUrl string) string {
+	if len(strUrl) != 8 {
+		return ""
+	}
 	return s.d.GetByShortUrl(strUrl)
 }

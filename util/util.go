@@ -43,7 +43,7 @@ func BuildRsp(ctx *gin.Context, err error, data gin.H) {
 	}
 	ctx.JSON(http.StatusOK, gin.H{
 		"code": def.CodeOk,
-		"msg":  "msg",
+		"msg":  "ok",
 		"data": data,
 	})
 }
