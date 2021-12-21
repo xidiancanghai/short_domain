@@ -6,6 +6,7 @@ import (
 	"short_domain/util"
 
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 func AddLongUrl(ctx *gin.Context) {
@@ -16,7 +17,12 @@ func AddLongUrl(ctx *gin.Context) {
 	if err := ctx.ShouldBind(&params); err != nil {
 		ctx.JSON(http.StatusOK, gin.H{"code": 0})
 	}
-	//logger.logrus.Info("hello")
+
+	logrus.WithFields(logrus.Fields{
+		"ip":  ctx.ClientIP(),
+		"url": params.Url,
+	}).Info("add_url")
+
 	url, err := service.NewShortUrlService().AddLongUrl(params.Url)
 	util.BuildRsp(ctx, err, gin.H{"url": url})
 }

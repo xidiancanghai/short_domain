@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -15,6 +16,7 @@ import (
 //rotatelogs 切分日志
 //lfshook 分级别不同文件日志
 func InitLogger(logPath string) {
+	fmt.Println(logPath)
 	exist, _ := checkPath(logPath)
 	if !exist {
 		// 创建文件夹

@@ -18,7 +18,6 @@ func main() {
 	//log.NewPrivateLog("api")
 	config.InitConfig("config/conf.toml")
 	logger.InitLogger(config.GetLogPath())
-	logrus.Info("hello")
 	startHttp(*port)
 }
 
